@@ -5,7 +5,6 @@ import IconButton from "./IconButton";
 import confetti from "canvas-confetti";
 import { Container } from "react-bootstrap";
 
-// Satırın stilini oluşturuyoruz
 const StrikeRow = styled.tr`
   text-decoration: ${(props) => (props.bought ? "line-through" : "none")};
   background-color: ${(props) =>
@@ -26,28 +25,26 @@ const ProductTable = ({
   handleDeleteProduct,
 }) => {
   
-  // Satır tıklama işlemi (Satın Alındı durumu değiştirilir)
+
   const handleRowClick = (id) => {
     setProducts((prevProducts) => {
       const updated = prevProducts.map((item) =>
         item.id === id ? { ...item, isBought: !item.isBought } : item
       );
 
-      // Önceden tüm ürünler satın alınmış mıydı, yeni durumda tüm ürünler satın alındı mı?
       const wasAllBoughtBefore = prevProducts.every((p) => p.isBought);
       const isAllBoughtAfter = updated.length > 0 && updated.every((p) => p.isBought);
 
-      // Eğer tüm ürünler satın alındıysa, kullanıcıya bir tebrik mesajı gösteriyoruz
+    
       if (!wasAllBoughtBefore && isAllBoughtAfter) {
         alert("🎉 Alışveriş Tamamlandı!");
-        confetti();  // Confetti animasyonunu tetikliyoruz
+        confetti();  
       }
 
       return updated;
     });
   };
 
-  // Kategori ve market isimlerini ID'ye göre alıyoruz
   const getNameById = (id, list) =>
     list.find((item) => item.id === id)?.name || "";
 
@@ -66,9 +63,9 @@ const ProductTable = ({
           {products.map((product, index) => (
             <StrikeRow
               key={product.id}
-              bought={product.isBought} // Satın alındı durumu
-              index={index} // Satır sırası (rengi değiştirmek için kullanılıyor)
-              onClick={() => handleRowClick(product.id)} // Satır tıklama işlemi
+              bought={product.isBought}
+              index={index}
+              onClick={() => handleRowClick(product.id)}
             >
               <td>{product.name}</td>
               <td>{getNameById(product.category, categories)}</td>
@@ -77,8 +74,8 @@ const ProductTable = ({
                 {/* Silme butonu */}
                 <IconButton
                   onClick={(e) => {
-                    e.stopPropagation(); // Satırın tıklanmasını engelle
-                    handleDeleteProduct(product.id); // Ürünü sil
+                    e.stopPropagation();
+                    handleDeleteProduct(product.id);
                   }}
                 />
               </td>

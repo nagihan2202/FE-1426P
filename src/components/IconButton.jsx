@@ -11,11 +11,10 @@ const Button = styled.button`
   border-radius: 5px;
   transition: background-color 0.2s;
   
-  // Butonun dikey hizalanmasını sağlayacak özellik
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  vertical-align: middle; // Dikey hizalamayı ortalar
+  vertical-align: middle;
 
   &:hover {
     background-color: #f8d7da;

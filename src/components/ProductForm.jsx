@@ -4,7 +4,6 @@ import { categories } from "../data/categories";
 import { shops } from "../data/shops";
 import styled from "styled-components";
 
-// Styled Components
 const FormContainer = styled.div`
   background: #f9f9f9;
   border-radius: 15px;
@@ -12,7 +11,7 @@ const FormContainer = styled.div`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   margin: 20px auto;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 `;
 
 const StyledForm = styled.form`
@@ -23,15 +22,15 @@ const StyledForm = styled.form`
 
 const FormGroup = styled.div`
   display: flex;
-  flex-direction: column;  // Yalnızca dikey hizalama için
-  gap: 10px;  // Etiket ile input arasındaki boşluk
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
 `;
 
 const Label = styled.label`
   font-weight: bold;
   font-size: 16px;
-  width: 100%;  // Etiketi tamamen geniş yap
+  width: 100%; // Etiketi tamamen geniş yap
 `;
 
 const Input = styled.input`
@@ -93,27 +92,26 @@ const SubmitButton = styled.button`
 
 const ProductForm = ({ onAddProduct }) => {
   const [productName, setProductName] = useState("");
-  const [selectedShop, setSelectedShop] = useState(""); // marketin id'si olacak
-  const [selectedCategory, setSelectedCategory] = useState(""); // kategorinin id'si olacak
+  const [selectedShop, setSelectedShop] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newProduct = {
       id: uuidv4(),
       name: productName,
-      shop: selectedShop, // shop id'si
-      category: selectedCategory, // kategori id'si
+      shop: selectedShop,
+      category: selectedCategory,
     };
     onAddProduct(newProduct);
-    setProductName(""); // Reset the form after submission
-    setSelectedShop(""); // Reset the shop selection
-    setSelectedCategory(""); // Reset the category selection
+    setProductName("");
+    setSelectedShop("");
+    setSelectedCategory("");
   };
 
   return (
     <FormContainer>
       <StyledForm onSubmit={handleSubmit}>
-        {/* Ürün Adı, Market ve Kategori aynı satırda */}
         <FormGroup>
           <Label htmlFor="productName">Ürün Adı</Label>
           <Input
@@ -168,5 +166,3 @@ const ProductForm = ({ onAddProduct }) => {
 };
 
 export default ProductForm;
-
-

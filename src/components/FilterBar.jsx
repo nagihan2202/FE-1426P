@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-// 💅 Styled Components
 const FilterWrapper = styled.div`
   background: #ffffff;
   padding: 20px;
